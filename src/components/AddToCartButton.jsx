@@ -35,7 +35,12 @@ export default function AddToCartButton({ product }) {
     })
   }
   const productQty = isProductInCart();
-  return productQty ? (
+  const isProductCollectible = product.type === "collectables";
+  return productQty ? isProductCollectible ? (
+    <div className="cart-qty">
+        <span>Already Added Into Cart</span>
+    </div>
+  ) : (
     <div className="cart-qty">
       <Add onClick={()=>addToCart(productQty+1)} sx={{fontSize:30}}/>
         <span>{productQty}</span>

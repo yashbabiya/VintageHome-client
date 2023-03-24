@@ -195,3 +195,78 @@ button{
         gap: 1em;
     }
   }
+
+  .sellers-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .seller-card{
+    width: 100%;
+    max-width: 500px !important;
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+
+  }
+  .seller-wrapper{
+    margin-top: 1em;
+  }
+
+  .sellerinfo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    img{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%;
+
+    }
+  }
+
+  .productss{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    overflow-x: scroll;
+  }
+
+  .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    .top,.bottom{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+
+    }
+  }
+
+  .avatar{
+    img{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+
+    }
+  }
+
+  .profile{
+    .left{
+        img{
+            max-width: 500px;
+        }
+    }
+  }

@@ -5,8 +5,10 @@ import Cart from './pages/Cart'
 import Explore from './pages/Explore'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Orders from './pages/orders'
 import Product from './pages/Product'
 import Profile from './pages/Profile'
+import Seller from './pages/Seller'
 import Sellers from './pages/Sellers'
 import Signup from './pages/Signup'
 
@@ -19,8 +21,11 @@ export default function Routing() {
           {user.isUserLoggedIn && <Route exact path="/profile" element={<Profile/>} />}
           <Route exact path="/explore/:title" element={<Explore/>} />
           <Route exact path="/sellers" element={<Sellers />} />
+          <Route exact path="/seller/:id" element={<Seller />} />
           <Route exact path="/product/:id" element={<Product />} />
           <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/orders" element={<Orders />} />
+
 
 
 

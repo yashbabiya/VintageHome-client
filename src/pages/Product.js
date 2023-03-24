@@ -2,6 +2,7 @@ import { Check, Verified } from '@mui/icons-material';
 import React from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import AddToCartButton from '../components/AddToCartButton';
+import SellerCard from '../components/sellerCard';
 
 export default function Product() {
   const {id} = useParams();
@@ -18,6 +19,10 @@ export default function Product() {
           <p>${product.price}</p>
           <span>{product?.isApproved &&<><Verified /> Admin Approved</>}</span>
           <AddToCartButton product={product}/>
+          <div className="sellerinfo">
+            <img src={product.seller.avatar} alt="" />
+            <b>{product.seller.username}</b>
+          </div>
         </div>
       </div>
       <div className="about">

@@ -11,6 +11,11 @@ const userReducer = (state=initialState,action) =>{
             localStorage.setItem("cart",JSON.stringify(state?.cart.items))
             return state;
 
+        case "UPDATEUSER":
+            state = {...state,...action.payload}
+            localStorage.setItem("user",JSON.stringify(state))
+            return state;
+
         case "LOGOUT":
             localStorage.removeItem("user")
             localStorage.removeItem("cart")
