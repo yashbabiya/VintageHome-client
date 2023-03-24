@@ -1,0 +1,22 @@
+.logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    h1{
+        font-size: 40px;
+        letter-spacing: 0.5px;
+        line-height: 42px;
+    }
+    .square{
+        position: absolute;
+        top: -0px;
+        left: -70px;
+        background-color: $light-brown;
+        border-radius: 100px;
+        width: 100px;
+        height: 100px;
+        z-index: -1;
+    }
+}

@@ -1,0 +1,41 @@
+.product-page{
+    .top{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1em;
+        padding: 1em;
+        .left,.right{
+            width: 100%;
+        }
+            .left{
+                img{
+                    width: 100%;
+                    max-height: 400px;
+                    // max-width: 500px;
+                    object-fit: cover;
+                }
+            }
+            .right{
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                // max-width: 300px;
+                span{
+                    display: flex;
+                    gap: .5em;
+                    color: green;
+                }
+                button{
+                    max-width: 300px;
+                }
+            }
+        
+    }
+    .about{
+        padding: 2em;
+        background-color: #363636;
+        color: white;
+    }
+}

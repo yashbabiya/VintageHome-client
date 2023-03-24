@@ -1,0 +1,197 @@
+$light-yellow : #FEEBE3;
+$light-brown : #E7C29D;
+$coffee : #AB886D;
+$brown : #6F3B0E;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import './components/header';
+@import './components/footer';
+@import './components/loader';
+
+@import './components/logo.scss';
+@import './page/home';
+@import './page/login';
+@import './page/explore';
+@import './page/product';
+
+
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // font-family: 'Poppins', sans-serif;
+    font-family: 'Didact Gothic', sans-serif;
+
+    // outline: 1px solid blue;
+}
+.App{
+}
+input{
+    padding: .5em;
+    font-size: 20px;
+}
+.pointer {
+    width: 50px !important;
+    height: 50px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    opacity: 0.5;
+    backdrop-filter: blur(102px);
+}
+.pointer-big {
+    width: 100px !important;
+    height: 100px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    opacity: 0.5;
+    backdrop-filter: blur(102px);
+}
+body{
+    // background-color: $light-yellow;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.serif{
+    // font-family: 'Anton', sans-serif;
+    font-family: 'Playfair Display SC', serif;
+}
+
+html{
+    font-family: 'Poppins', sans-serif !important;
+}
+
+h1,h2,h3,h4,h5,h6,b{
+    font-weight: bold;
+}
+
+a, p, div, button{
+    font-size: 20px;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+.max-width{
+    // max-width: 1300px;
+}
+.page{
+    padding: 1em;
+    min-height: 80vh;
+    // max-width: 1300px;
+
+}
+button{
+    background: $brown;
+    border: none;
+    padding: 1em 2em;
+    // font-family: 'Anton', sans-serif;
+    color: white;    
+    transition: .1s ease-in-out;
+    &:hover{
+        background-color: $coffee;
+        color: white;
+    }
+}
+.outline-btn{
+    background: none;
+    color: black;
+    border: 1px solid black;
+    padding: .5em 1em;
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+}
+.button{
+    background: $brown;
+    border: none;
+    padding: 1em 2em;
+    // font-family: 'Anton', sans-serif;
+    color: white;    
+    transition: .5s ease-in-out;
+    &:hover{
+        background-color: $coffee;
+        color: white;
+    }
+}
+
+.App{
+    width: 100%;
+}
+.cart-qty{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    gap: 1em;
+}
+.flex-start{
+    justify-content: flex-start !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .cart-card{
+    justify-content: space-between !important;
+    img{
+        max-width: 400px;
+    }
+    h2{
+        width: 100%;
+    }
+    .info{
+        width: 100%;
+    }
+  }
+
+  .cartPage{
+    .total{
+        width: 100%;
+        text-align: center;
+        margin-top: 1em;
+    }
+    .products{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+  }

@@ -1,0 +1,35 @@
+.product-card{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+    img{
+        width: 100%;
+        // max-width: 300px;
+        height: 250px !important;
+        object-fit: cover;
+    }
+    button{
+        width: 100%;
+    }
+    h2{
+        width: 20ch;
+    }
+}
+.explore{
+    .search-wrap{
+        margin-top: 1em;
+    }
+    .allProducts{
+        margin-top: 2em;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 5em;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+}
