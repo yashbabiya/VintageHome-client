@@ -8,7 +8,7 @@ const userReducer = (state=initialState,action) =>{
         case "LOGIN":
             state = {...state,...action.payload,isUserLoggedIn:true}
             localStorage.setItem("user",JSON.stringify(state))
-            localStorage.setItem("cart",JSON.stringify(state?.cart.items))
+            action?.payload?.cart?.items && localStorage.setItem("cart",JSON.stringify(action.payload?.cart?.items))
             return state;
 
         case "UPDATEUSER":

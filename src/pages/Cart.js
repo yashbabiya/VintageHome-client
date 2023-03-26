@@ -1,13 +1,17 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
 import CartCard from '../components/CartCard';
+import PageLoader from '../components/PageLoader';
 import {URL} from '../helpers/API'
 export default function Cart() {
   const cartData = useSelector((state)=>state.cart)
+  const dispatch = useDispatch();
+  const [isLoading,setIsLoading] = useState();
   const calculateTotal=()=>{
     let ans = 0;
+    if(cartData?.length)
     cartData?.forEach((item)=>{
       const priceOfProduct = item.product.price
       const qty = item.qty;
@@ -17,27 +21,42 @@ export default function Cart() {
   }
   useEffect(()=>{
     calculateTotal()
+    console.log("cart",cartData)
   },[cartData])
+
+  const fetchCartData = ()=>{
+    axios.get(URL+'user/cart',{withCredentials:true}).then((res)=>{
+      dispatch({
+        type:"UPDATE_CART",
+        payload:res.data
+      })
+    })
+  }
 
   const placeOrder = () =>{
     let filtered = cartData.filter((item)=>item.qty);
+    setIsLoading(true);
     const reqBody = {
       items:filtered
     }
     axios.post(URL+'product/placeOrder',reqBody,{withCredentials:true}).then(()=>{
       toast.success("Order placed successfully")
+      setIsLoading(false);
     }).catch((e)=>{
       toast.error("Error Occured")
-
+      setIsLoading(false);
     })
   }
   const [total,setTotal] = useState(0);
-
+  useEffect(()=>{
+    fetchCartData()
+  },[])
   return (
     <div className='page cartPage'>
+      {isLoading && <PageLoader/>}
       <h1 className="serif">Cart</h1>
       {
-        !cartData.filter((item)=>item.qty)?.length ?
+        (!cartData?.length ||!cartData?.filter((item)=>item.qty)?.length) ?
         <>Your Cart Is Empty</>
         :<div className='product-list'>
         <div className="products">

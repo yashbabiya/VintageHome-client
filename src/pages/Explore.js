@@ -16,7 +16,7 @@ export default function Explore() {
 
 
   const {title} = useParams()
-  const allCategories = title==="collectibles" ?
+  const allCategories = title==="collectables" ?
   [
     {label:"Comics",value:"comics"},
     {label:"History",value:"history"},

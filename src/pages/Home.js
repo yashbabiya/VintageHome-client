@@ -1,27 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Painting from "../imgs/190324.jpg";
 import Gramophone from "../imgs/gramophone.png";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
+import axios from "axios";
+import ProductCard from "../components/ProductCard";
+import Loader from "../components/Loader";
+import { URL } from "../helpers/API";
 export default function Home() {
   const dispatch = useDispatch()
-  const products = [
-    {
-      img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Coin_of_Queen_Tamar_1200_AD.png",
-      name:"Coin of Queen Tamar",
-      price:"$ 200"
-    },
-    {
-      img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Coin_of_Queen_Tamar_1200_AD.png",
-      name:"Coin of Queen Tamar",
-      price:"$ 200"
-    },
-    {
-      img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Coin_of_Queen_Tamar_1200_AD.png",
-      name:"Coin of Queen Tamar",
-      price:"$ 200"
-    }
-  ]
+  const [products,setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const fetchAllProducts = () =>{
+    setIsLoading(true)
+    axios.get(URL+'product/getAll?limit=5').then((res)=>{
+      setProducts(res.data)
+      setIsLoading(false)
+    }).catch((err)=>{
+      setIsLoading(false)
+      alert("error occured")
+    })
+  }
+  useEffect(()=>{
+    fetchAllProducts()
+  },[])
   return (
     <div className="home max-width">
       <div className="hero">
@@ -80,19 +82,19 @@ export default function Home() {
           </p>
         </div>
       </div>
-      {/* <div className="recents">
-        <h1 className="serif">Recents</h1>
-        <div className="products">
-          {products.map(product=><div className="Card" onMouseEnter={()=>dispatch({type:"MAKE_BIG"})} onMouseLeave={()=>dispatch({type:"MAKE_NORMAL"})}>
-            <img src={product.img} alt="" />
-            <div className="info">
+      <div className="recents">
+        <h2 className="serif" style={{ margin: "2em 0" }}>
+          Recent Products
+        </h2>
+        <div style={{justifyContent:"flex-start"}} className="orders flex scroll-x">
+          {isLoading && <Loader />}
 
-            <h2 className="serif">{product.name}</h2>
-            <p>{product.price}</p>
-            </div>
-          </div>)}
+          { !isLoading && (!products?.length ? <>No Products</> : products?.map((product, index) => (
+            <ProductCard {...product} />
+          )))}
         </div>
-      </div> */}
+      </div>
+      
     </div>
   );
 }
