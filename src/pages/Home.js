@@ -18,7 +18,7 @@ export default function Home() {
       setIsLoading(false)
     }).catch((err)=>{
       setIsLoading(false)
-      alert("error occured")
+      // alert("error occured")
     })
   }
   useEffect(()=>{

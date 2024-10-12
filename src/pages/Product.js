@@ -102,7 +102,7 @@ export default function Product() {
           navigate("/");
         })
         .catch((err) => {
-          alert("Could not delete product");
+          // alert("Could not delete product");
         });
     }
   };

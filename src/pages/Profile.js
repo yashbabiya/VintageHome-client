@@ -25,7 +25,7 @@ export default function Profile() {
 
 const handleSubmit = (e) => {
     e.preventDefault()
-    const file = e.target[0]?.files[0]
+    const file = e?.target[0]?.files[0]
     setIsLoading(true)
     if (!file){
       const reqBody = {
@@ -41,12 +41,12 @@ const handleSubmit = (e) => {
         })
         setIsLoading(false)
       }).catch((err)=>{
-        alert(err.response?.data)
+        // alert(err.response?.data)
         setIsLoading(false)
       })
     };
 
-    const storageRef = ref(storage, `files/${file.name}`);
+    const storageRef = ref(storage, `files/${file?.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on("state_changed",
       (snapshot) => {
@@ -55,7 +55,7 @@ const handleSubmit = (e) => {
         setProgresspercent(progress);
       },
       (error) => {
-        alert(error);
+        // alert(error);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {

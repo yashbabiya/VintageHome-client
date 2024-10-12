@@ -45,10 +45,12 @@ export default function Profile() {
             type: "UPDATEUSER",
             payload: reqBody,
           });
+        }).catch(err => {
+          toast.error("Error while creating the user")
         });
     }
 
-    const storageRef = ref(storage, `files/${file.name}`);
+    const storageRef = ref(storage, `files/${file?.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -78,7 +80,8 @@ export default function Profile() {
             .then((res) => {
               toast.success("User created successfully")
               navigate('/login')
-              console.log("here", res.data);
+            }).catch(err => {
+              toast.error(err?.response?.data || "Error while creating the user")
             });
         });
       }
@@ -100,7 +103,6 @@ export default function Profile() {
                 type="file"
                 style={{display:"none"}}
                 onChange={(e) => {
-                  console.log("e.originalEvent.dataTransfer",e.originalEvent.dataTransfer)
                   var reader = new FileReader();
                   var url = reader.readAsDataURL(e.target?.files[0]);
                   reader.onloadend = function (e) {
