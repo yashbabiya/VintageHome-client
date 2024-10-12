@@ -1,1 +1,1 @@
-Live Site - https://vintage-home-client.vercel.app/
+Live Site - https://vintage-home.vercel.app/
